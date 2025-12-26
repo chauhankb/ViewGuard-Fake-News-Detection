@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>VeriNews - Fake News Detection</title>
+</head>
+
+<body style="font-family: Arial; background-color: #eef2f7;">
+
+    <div style="
+        width: 60%;
+        margin: auto;
+        margin-top: 50px;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    ">
+
+        <h1 style="text-align: center; color: #2c3e50;">VeriNews</h1>
+        <h3 style="text-align: center; color: #555;">
+            Fake News Detection System
+        </h3>
+
+        <form action="/predict" method="post">
+
+            <label style="font-weight: bold;">Enter News Text:</label>
+            <textarea
+                name="news"
+                rows="10"
+                placeholder="Paste news article text here..."
+                required
+                style="
+                    width: 100%;
+                    padding: 12px;
+                    margin-top: 10px;
+                    font-size: 14px;
+                    border-radius: 6px;
+                    border: 1px solid #ccc;
+                "
+            >{{ news_text }}</textarea>
+
+            <br><br>
+
+            <div style="text-align: center;">
+                <button type="submit"
+                    style="
+                        padding: 12px 25px;
+                        font-size: 16px;
+                        background-color: #3498db;
+                        color: white;
+                        border: none;
+                        border-radius: 6px;
+                        cursor: pointer;
+                    ">
+                    Check News
+                </button>
+            </div>
+        </form>
+
+        {% if prediction %}
+        <div style="
+            margin-top: 30px;
+            padding: 15px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: {{ result_color }};
+            border: 2px solid {{ result_color }};
+            border-radius: 6px;
+        ">
+            Result: {{ prediction }}
+        </div>
+        {% endif %}
+
+    </div>
+
+</body>
+</html>
